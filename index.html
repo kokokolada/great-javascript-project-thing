@@ -41,7 +41,7 @@
                    Let'i ei saa vanades browserites kasutada, uuri caniuse.com
                    Let on local variable.*/
         //----ARRAY'D-------------
-        var arrayOne = new array();
+        //  var arrayOne = new array();
         var arrayTwo = [1, "tekst", false];
         //arrayst printimine:
         //    console.log(arrayTwo[2]);
@@ -49,8 +49,13 @@
         for (var i = 0; i < arrayTwo.length; i++) {
             console.log(arrayTwo[i]);
         }
+        //HTML elemendi sisu muutmine
         document.getElementById("pealkiri").innerHTML = document.title;
-
+        //HTML elemendi loomine
+        var link = document.createElement("a");
+        link.innerHTML = "Kiisu";
+        link.href = "#";
+        document.body.appendChild(link);
 
     </script>
 </body>
