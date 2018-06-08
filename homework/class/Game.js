@@ -4,9 +4,8 @@ class Game {
     this.winWord = "";
     /*asyncronously gets list of words and starts the game when the request is complete
     if there is only one parameter, then can in a short way call function*/
-
     this.httpRequest("words.json", result => {
-      this.startNewGame(result);
+      this.startNewGame(result); //callback - it will run the given function after the request completes
     });
   }
 
@@ -35,8 +34,19 @@ class Game {
 
   guessWord(word) {
     var guess = document.getElementById("guess").value;
-    this.board.writeWord(guess);
-    this.checkForWin(this.winWord, guess);
+    if (this.inputValidation(guess)) {
+      this.board.writeWord(guess);
+      this.checkForWin(this.winWord, guess);
+    }
+  }
+
+  inputValidation(guess) {
+    var letters = /^[A-Za-z]+$/;
+    if (!guess.match(letters) || guess.length !== 5) {
+      alert("Needs to be a five letter word!");
+      return false;
+    }
+    return true;
   }
 
   checkForWin(word, guess) {
